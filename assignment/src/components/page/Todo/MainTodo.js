@@ -1,30 +1,37 @@
-import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TodoItem from "./TodoItem";
 import styled, { createGlobalStyle } from "styled-components";
+import TodoAxios from "../../../utils/TodoAxios";
 
 
 const MainTodo = () => {
     const navigate = useNavigate()
 
-    const [Todo,setTodo] = useState([])
+    const [Todos,setTodos] = useState([])
 
     const Create_Click = () => {
         navigate('/Todo/CreateTodo')
     }
 
-    // const [,updateState] = useState();
-    // const forceUpdate = useCallback(()=>updateState({}))
+    const DeleteAll_Click = () => {
+        Todos?.map(todo=>(
+            TodoAxios.delete(`/todos/${todo.id}`)
+        ))
+        setTodos([])
+    }
+
+    const deleteTodo = (id) => {
+        TodoAxios.delete(`/todos/${id}`)
+        .then(()=>{
+            setTodos((prev)=>prev.filter((todo)=>todo.id !== id))
+        })
+    }
 
     useEffect(() => {
-        axios.get('http://localhost:8080/todos',{
-            headers: {
-                Authorization : localStorage.getItem('Token')
-            }
-        })
+        TodoAxios.get('/todos')
         .then((res,req)=>{
-            setTodo(res.data.data)
+            setTodos(res.data.data)
         })
         .catch((err)=>{
             console.error(err);
@@ -36,14 +43,14 @@ const MainTodo = () => {
             <Global/>
             <div>
                 <Title>TodoList</Title>
-                <AddBtn onClick={Create_Click}>할 일 추가하기</AddBtn>
+                <BigBtn onClick={Create_Click}>할 일 추가하기</BigBtn>
+                <BigBtn onClick={DeleteAll_Click}>모두 삭제하기</BigBtn>
                 {
-                    Todo?.map(todo=>(
-                        <TodoItem todo={todo} key={todo.id}></TodoItem>
+                    Todos?.map(todo=>(
+                        <TodoItem todo={todo} setTodos={setTodos} key={todo.id} deleteTodo={deleteTodo}></TodoItem>
                     ))
                 }       
             </div>
-
         </>
     )
 }
@@ -65,7 +72,7 @@ const Title = styled.div`
     justify-content: center;
 `
 
-const AddBtn = styled.button`
+const BigBtn = styled.button`
     margin: auto;
     display: flex;
     width: 75rem;

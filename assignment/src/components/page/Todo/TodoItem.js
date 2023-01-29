@@ -5,31 +5,24 @@ import styled from 'styled-components';
 import UpdateTodo from './UpdateTodo';
 import UpdateImg from '../../../asset/update.png';
 import DeleteImg from '../../../asset/delete.png';
+import ToggleImg from '../../../asset/Toggle.png';
 
-const TodoItem = (todo) => {
-    const {id,content,title} = todo.todo //왜 todo.todo로 접근이 되는지 모르겠다..
+const TodoItem = ({todo,deleteTodo}) => { //비구조 할당, 한 단계 벗기기
+    const {id,content,title} = todo //todo(props).todo로 접근
     const navigate = useNavigate()
-
-    const deleteTodo = (() => {
-        axios.delete(`http://localhost:8080/todos/${id}`,{
-            headers: {
-                Authorization : localStorage.getItem('Token')
-            }
-        })
-    })
 
     return(
         <>
         <EachTodo>
+            <ToggleImgStyle src={ToggleImg} alt='Toggle'/>
             <Detail>
                 <Title>{title}</Title>
                 <div>{content}</div>
             </Detail>
-            <DeleteBtn onClick={deleteTodo}><img src={DeleteImg} alt='deleteicon'/></DeleteBtn>
-            <UpdateBtn onClick={()=>navigate('/Todo/UpdateTodo',{state:todo})}><img src={UpdateImg} alt='updateicon'/></UpdateBtn>
+            <DeleteBtn onClick={()=>deleteTodo(id)}><Icon src={DeleteImg} alt='deleteicon'/></DeleteBtn>
+            <UpdateBtn onClick={()=>navigate('/Todo/UpdateTodo',{state:todo})}><Icon src={UpdateImg} alt='updateicon'/></UpdateBtn>
         </EachTodo>        
         <hr/>
-        
         </>
 
     )
@@ -44,19 +37,30 @@ const Title = styled.div`
 
 const EachTodo = styled.div`
     display: flex;
-
+    margin-left: 45rem;
+    align-items: center;
 `
 
 const Detail = styled.div`
     color: white;
+    margin-right: 3rem;
 `
  
 const DeleteBtn = styled.button`
     background-color: black;
-    width: 100px;
-    height: 100px;
 `
-
 const UpdateBtn = styled.button`
     background-color: black;
+`
+
+const Icon = styled.img`
+    width: 3rem;
+    height: 3rem;
+    margin-left: 0.5rem;
+`
+
+const ToggleImgStyle = styled.img`
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
 `

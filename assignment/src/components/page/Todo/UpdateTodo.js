@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import TodoAxios from "../../../utils/TodoAxios";
 
 const UpdateTodo = () => {
     const {state} = useLocation()
-    const {id,title,content} = state.todo
+    const {id,title,content} = state
 
     const [updateTitle,setUpdateTitle] = useState(title)
     const [updateContent,setUpdateContent] = useState(content)
@@ -13,13 +14,10 @@ const UpdateTodo = () => {
 
     const OnSubmit = ((e)=>{
         e.preventDefault()
-        axios.put(`http://localhost:8080/todos/${id}`,{
+
+        TodoAxios.put(`/todos/${id}`,{
             title : updateTitle,
             content : updateContent
-        },{
-            headers: {
-                Authorization : localStorage.getItem('Token')
-            }
         })
         .then(()=>{
             navigate('/Todo/MainTodo')

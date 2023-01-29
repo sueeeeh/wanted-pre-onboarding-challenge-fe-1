@@ -1,4 +1,4 @@
-import axios from "axios";
+import TodoAxios from "../../../utils/TodoAxios"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -19,16 +19,11 @@ const CreateTodo = () => {
     const OnSubmit = (e) => {
         e.preventDefault()
 
-        axios.post('http://localhost:8080/todos',{
-            title,
-            content 
-        },{
-            headers: {
-                Authorization : localStorage.getItem('Token')
-            }
+        TodoAxios.post('/todos',{
+            title,content
         })
         .then((res,req)=>{
-            console.log(res)
+            navigate('/Todo/MainTodo')
         })
         .catch((err)=>{
             console.error(err);
