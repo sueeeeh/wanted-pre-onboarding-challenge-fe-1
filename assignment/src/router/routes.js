@@ -2,8 +2,8 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Main from '../components/page/main';
 import Login from '../components/page/Login';
 import SignUp from '../components/page/SignUp';
-import Main_Todo from '../components/page/Todo/Main_Todo';
-import Create_Todo from '../components/page/Todo/Create_Todo';
+import MainTodo from '../components/page/Todo/MainTodo';
+import CreateTodo from '../components/page/Todo/CreateTodo';
 
 
 const Router = () => {
@@ -14,8 +14,8 @@ const Router = () => {
                     <Route path='/' element={<Main/>} />
                     <Route path='/auth/Login' element={<Login/>} />
                     <Route path='/auth/SignUp' element={<SignUp/>} />
-                    <Route path='/Todo/Main_Todo' element={<Main_Todo/>} />
-                    <Route path='/Todo/Create_Todo' element={<Create_Todo/>} />
+                    <Route path='/Todo/MainTodo' element={<MainTodo/>} />
+                    <Route path='/Todo/CreateTodo' element={<CreateTodo/>} />
                 </Routes>
             </BrowserRouter>
         </>

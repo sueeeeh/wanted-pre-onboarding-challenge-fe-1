@@ -10,7 +10,7 @@ const Main = () => {
         navigate('/auth/SignUp');
     }
     function maintodo() {
-        navigate('/Todo/Main_Todo');
+        navigate('/Todo/MainTodo');
     }
 
     return (
@@ -18,7 +18,7 @@ const Main = () => {
             <h1>hi this is main page</h1>
             <button id="Login" onClick={login}>Login</button>
             <button id="SignUp" onClick={signup}>SignUp</button>
-            <button id="Main_Todo" onClick={maintodo}>Todo(main)</button>
+            <button id="MainTodo" onClick={maintodo}>Todo(main)</button>
         </>
     )
 }
