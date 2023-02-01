@@ -5,7 +5,6 @@ import styled, { createGlobalStyle } from "styled-components";
 import TodoAxios from "../../../utils/TodoAxios";
 import HeaderTodo from "../../Global/HeaderTodo";
 
-
 const MainTodo = () => {
     const navigate = useNavigate()
 
@@ -74,7 +73,6 @@ const BigBtn = styled.button`
     height: 3rem;
     background-color: white;
     border: none;
-    margin-top: 2rem;
     margin-bottom: 2rem;
 
     justify-content: center;

@@ -8,8 +8,8 @@ import DeleteImg from '../../../asset/delete.png';
 import ToggleImg from '../../../asset/Toggle.png';
 // import OpenToggleImg from '../../../asset/openToggle.png';
 
-const TodoItem = ({todo,deleteTodo}) => { //비구조 할당, 한 단계 벗기기
-    const {id,content,title} = todo //todo(props).todo로 접근
+const TodoItem = ({todo,deleteTodo}) => { //비구조화 할당, 한 단계 벗기기 https://learnjs.vlpt.us/useful/06-destructuring.html
+    const {id,content,title} = todo //비구조화 할당, (todo(props).todo로 접근, 파라메타로 받아올 때 비구조 할당으로 받아와서 필요없어짐)
     const navigate = useNavigate()
     
     const [Toggle,setToggle] = useState(false)
@@ -63,6 +63,7 @@ const Content = styled.div`
 const DeleteBtn = styled.button`
     background-color: black;
 `
+
 const UpdateBtn = styled.button`
     background-color: black;
 `

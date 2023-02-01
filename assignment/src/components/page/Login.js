@@ -54,7 +54,6 @@ const Login = () => {
                 <S.Padding/>
                 <S.BottomBtn type="submit">Login</S.BottomBtn>
             </form>
-            <S.BottomBtn onClick={()=>{navigate('/Todo/MainTodo')}}>Back</S.BottomBtn>
         </>
     )
     

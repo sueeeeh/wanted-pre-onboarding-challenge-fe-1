@@ -4,7 +4,7 @@ export const Global = createGlobalStyle`
     body {
         width: 100%;
         height: 100%;
-        background-color: #00045F;
+        background-color: #00022B;
     }
 `
 
@@ -38,7 +38,7 @@ export const BottomBtn = styled.button`
     align-items: center;
 
     font-size: 2rem;
-    color: #00045F;
+    color: #00022B;
 `
 
 export const Padding = styled.div`

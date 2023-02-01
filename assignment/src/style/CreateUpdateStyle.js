@@ -8,32 +8,6 @@ export const Global = createGlobalStyle`
     }
 `
 
-export const Title = styled.div`
-    font-size: 6rem;
-    color: white;
-    display: flex;
-    justify-content: center;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    margin-right: 35rem;
-    color: #0008B5;
-`
-
-export const AuthBtn = styled.button`
-    height: 4rem;
-    width: 7rem;
-    background-color: white;
-    margin-right: 2rem;
-
-    font-size: 1.5rem;
-`
-
-export const Header = styled.header`
-    display: flex;
-    justify-content: end;
-    align-items: center;
-`
-
 export const Input = styled.input`
     width: 70rem;
     height: 4rem;

@@ -51,7 +51,6 @@ const SignUp = () => {
                 <S.Padding/>
                 <S.BottomBtn type="submit">Sign Up</S.BottomBtn>
             </form>
-            <S.BottomBtn onClick={()=>{navigate('/Todo/MainTodo')}}>Back</S.BottomBtn>
         </>
     )
 }

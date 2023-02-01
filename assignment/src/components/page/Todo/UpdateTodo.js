@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import TodoAxios from "../../../utils/TodoAxios";
 import * as S from "../../../style/CreateUpdateStyle"
+import HeaderTodo from "../../Global/HeaderTodo";
 
 const UpdateTodo = () => {
     const {state} = useLocation()
@@ -29,11 +30,7 @@ const UpdateTodo = () => {
     return(
         <div>
             <S.Global/>
-            <S.Header>
-                    <S.Title>Update</S.Title>
-                    <S.AuthBtn onClick={()=>navigate('/auth/Login')}>login</S.AuthBtn>
-                    <S.AuthBtn onClick={()=>navigate('/auth/SignUp')}>sign up</S.AuthBtn>
-            </S.Header>
+            <HeaderTodo title='Update'/>
             <form onSubmit={OnSubmit}>
                 <S.Input value={updateTitle} onChange={(e)=>setUpdateTitle(e.target.value)}/>
                 <S.Input value={updateContent} onChange={(e)=>setUpdateContent(e.target.value)}/>
