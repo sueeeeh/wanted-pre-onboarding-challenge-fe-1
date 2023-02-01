@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import styled, { createGlobalStyle } from "styled-components";
 import TodoAxios from "../../../utils/TodoAxios";
+import * as S from "../../../style/CreateUpdateStyle"
 
 const UpdateTodo = () => {
     const {state} = useLocation()
@@ -26,13 +28,18 @@ const UpdateTodo = () => {
 
     return(
         <div>
-            <h1>UpdateTodo</h1>
+            <S.Global/>
+            <S.Header>
+                    <S.Title>Update</S.Title>
+                    <S.AuthBtn onClick={()=>navigate('/auth/Login')}>login</S.AuthBtn>
+                    <S.AuthBtn onClick={()=>navigate('/auth/SignUp')}>sign up</S.AuthBtn>
+            </S.Header>
             <form onSubmit={OnSubmit}>
-                <input value={updateTitle} onChange={(e)=>setUpdateTitle(e.target.value)}></input>
-                <input value={updateContent} onChange={(e)=>setUpdateContent(e.target.value)}></input>
-                <button type="submit">저장</button>
+                <S.Input value={updateTitle} onChange={(e)=>setUpdateTitle(e.target.value)}/>
+                <S.Input value={updateContent} onChange={(e)=>setUpdateContent(e.target.value)}/>
+                <S.BottomBtn type="submit">Save</S.BottomBtn>
             </form>
-            <button onClick={()=>navigate('/Todo/MainTodo')}>메인으로 돌아가기</button>
+            <S.BottomBtn onClick={()=>navigate('/Todo/MainTodo')}>Back</S.BottomBtn>
         </div>
     )
 }

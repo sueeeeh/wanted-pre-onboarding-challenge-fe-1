@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import TodoItem from "./TodoItem";
 import styled, { createGlobalStyle } from "styled-components";
 import TodoAxios from "../../../utils/TodoAxios";
+import HeaderTodo from "../../Global/HeaderTodo";
 
 
 const MainTodo = () => {
@@ -42,7 +43,8 @@ const MainTodo = () => {
         <>
             <Global/>
             <div>
-                <Title>TodoList</Title>
+                <HeaderTodo title='TodoList'/>
+
                 <BigBtn onClick={Create_Click}>할 일 추가하기</BigBtn>
                 <BigBtn onClick={DeleteAll_Click}>모두 삭제하기</BigBtn>
                 {
@@ -65,25 +67,19 @@ const Global = createGlobalStyle`
     }
 `
 
-const Title = styled.div`
-    font-size: 6rem;
-    color: white;
-    display: flex;
-    justify-content: center;
-`
-
 const BigBtn = styled.button`
     margin: auto;
     display: flex;
-    width: 75rem;
-    height: 6.5rem;
+    width: 70rem;
+    height: 3rem;
     background-color: white;
     border: none;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
+    font-size: 2rem;
 `
+
 

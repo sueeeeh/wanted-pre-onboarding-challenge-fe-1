@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React,{ useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import * as S from '../../style/LoginSigninStyle';
 
 const SignUp = () => {
     const [e,sete] =  useState("");
@@ -43,12 +43,15 @@ const SignUp = () => {
     }
     return (
         <>
-            <h1>Signup</h1>
+            <S.Global/>
+            <S.Title>Sign Up</S.Title>
             <form onSubmit={submitHandler}>
-                <input placeholder="email" name='email' value={e} onChange={emailHandler}></input>
-                <input placeholder="password" name='password' value={p} onChange={passwordHandler}></input>
-                <button>SignUp</button>
+                <S.Input placeholder="email" name='email' value={e} onChange={emailHandler}/>
+                <S.Input placeholder="password" name='password' value={p} onChange={passwordHandler}/>
+                <S.Padding/>
+                <S.BottomBtn type="submit">Sign Up</S.BottomBtn>
             </form>
+            <S.BottomBtn onClick={()=>{navigate('/Todo/MainTodo')}}>Back</S.BottomBtn>
         </>
     )
 }

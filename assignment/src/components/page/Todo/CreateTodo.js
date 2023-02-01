@@ -1,6 +1,7 @@
 import TodoAxios from "../../../utils/TodoAxios"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import * as S from "../../../style/CreateUpdateStyle"
 
 
 const CreateTodo = () => {
@@ -32,13 +33,19 @@ const CreateTodo = () => {
 
     return(
         <div>
-            <h1>Create Todo</h1>
+            <S.Global/>
+            <S.Header>
+                    <S.Title>Create</S.Title>
+                    <S.AuthBtn onClick={()=>navigate('/auth/Login')}>login</S.AuthBtn>
+                    <S.AuthBtn onClick={()=>navigate('/auth/SignUp')}>sign up</S.AuthBtn>
+            </S.Header>
             <form onSubmit={OnSubmit}>
-                <input name="title" placeholder="title" value={title} onChange={ChangeTitle}/>
-                <input name="content" placeholder="content" value={content} onChange={ChangeContent}/>
-                <button type="submit">submit button</button>
+                <S.Input name="title" placeholder="Enter Title" value={title} onChange={ChangeTitle}/>
+                <S.Input name="content" placeholder="Enter Content" value={content} onChange={ChangeContent}/>
+                <S.Padding/>
+                <S.BottomBtn type="submit">Save</S.BottomBtn>
             </form>
-            <button onClick={()=>{navigate('/Todo/MainTodo')}}>MainTodo</button>
+            <S.BottomBtn onClick={()=>{navigate('/Todo/MainTodo')}}>Back</S.BottomBtn>
         </div>
     )
 }
