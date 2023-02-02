@@ -9,7 +9,7 @@ const Main = () => {
     const [isLogin,setIsLogin] = useState(false)
 
     useEffect(()=>{
-        if(localStorage.getItem('Token')){
+        if(localStorage.getItem('token')){
             navigate('/Todo/MainTodo')
         }
     })

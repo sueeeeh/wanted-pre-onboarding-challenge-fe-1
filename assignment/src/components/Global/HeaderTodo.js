@@ -7,13 +7,16 @@ const HeaderTodo = ({title}) => {
     const [isLogin,setIsLogin] = useState(false)
 
     useEffect(()=>{
-        if(localStorage.getItem('Token')){
+        if(localStorage.getItem('token')){
             setIsLogin(true)
+        }
+        if(!isLogin){
+            navigate('/')
         }
     },[])
 
     const logout = () => {
-        localStorage.removeItem('Token')
+        localStorage.removeItem('token')
     }
 
     return(
