@@ -22,10 +22,13 @@ const MainTodo = () => {
     }
 
     const deleteTodo = (id) => {
-        TodoAxios.delete(`/todos/${id}`)
-        .then(()=>{
-            setTodos((prev)=>prev.filter((todo)=>todo.id !== id))
-        })
+        const check = window.confirm('Are sure want to delete?')
+        if(check){
+            TodoAxios.delete(`/todos/${id}`)
+            .then(()=>{
+                setTodos((prev)=>prev.filter((todo)=>todo.id !== id))
+            })  
+        }
     }
 
     useEffect(() => {

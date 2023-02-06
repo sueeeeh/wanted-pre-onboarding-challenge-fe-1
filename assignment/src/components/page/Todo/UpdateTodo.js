@@ -18,13 +18,18 @@ const UpdateTodo = () => {
     const OnSubmit = ((e)=>{
         e.preventDefault()
 
-        TodoAxios.put(`/todos/${id}`,{
+        const check = window.confirm('Are sure want to update?') //확인 confirm
+        if(check){
+            TodoAxios.put(`/todos/${id}`,{
             title : updateTitle,
             content : updateContent
         })
         .then(()=>{
             navigate('/Todo/MainTodo')
         })
+        }
+
+
     })
 
     return(

@@ -10,23 +10,19 @@ const HeaderTodo = ({title}) => {
         if(localStorage.getItem('token')){
             setIsLogin(true)
         }
-        if(!isLogin){
+        else{
             navigate('/')
         }
-    },[])
+    },[isLogin])
 
     const logout = () => {
         localStorage.removeItem('token')
+        setIsLogin(false)
     }
 
     return(
         <Header>
             <Title>{title}</Title>
-            {!isLogin && 
-            <>
-                <AuthBtn onClick={()=>navigate('/auth/Login')}>login</AuthBtn>
-                <AuthBtn onClick={()=>navigate('/auth/SignUp')}>sign up</AuthBtn>
-            </>}
             {isLogin && <AuthBtn onClick={logout}>logout</AuthBtn>}
         </Header>
     )
